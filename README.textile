@@ -1,0 +1,44 @@
+h1. deploy_postgres
+
+h2. summary
+
+deploy postgres and munin with fabric
+
+h2. usage
+
+h3. environment
+
+* install those software before this repository code.
+** python
+*** pip
+*** fabric
+
+* Target Operating System is...
+** CentOS 7.0
+
+* can use ~/.ssh/config settings.
+
+h3. Usage Command
+
+* list usable fabric command
+<pre>
+$ fab -l
+</pre>
+
+* install and start process with postgres
+<pre>
+$ fab -H [host_name] startup_postgres:[pg_version],[package_version],[os],[architecture]
+</pre>
+** default
+*** OS: rhel7(CentOS7)
+*** PostgreSQL: 9.3.5
+*** architecture: x86_64
+
+* cleanup PostgreSQL environment
+<pre>
+$ fab -H [host_name] postgres.remove_postgres
+</pre>
+
+* under construction...
+
+
