@@ -4,7 +4,6 @@ from fabric.api import sudo, run, env, cd, put, settings
 from fabric.decorators import task
 from urlparse import urlparse
 import os
-import time
 
 env.use_ssh_config = True
 
@@ -30,11 +29,12 @@ def install_postgres_from_local(pg_version="9.3.5",
         "postgresql"+ major_version +"-devel-"+ pg_version + package_info
     ]
     run("mkdir -p /tmp/rpm/pg")
-    
+
+    # install postgres package from rpm.
     with cd("/tmp/rpm/pg"):
         for rpm in pg_rpms:
             put( "/".join([ package_dir, os_version, "".join(version_array), rpm]), "/tmp/rpm/pg")
-            run("sudo rpm -ivh --replacepkgs " + urlparse(rpm).path.split("/")[-1])
+            run("sudo rpm -ivh --replacepkgs " + rpm)
 
 @task
 def remove_postgres():

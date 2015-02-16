@@ -10,6 +10,7 @@ import time
 import common
 import munin
 import postgres
+import orafce
 
 env.use_ssh_config = True
 

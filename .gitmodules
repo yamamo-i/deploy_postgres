@@ -1,0 +1,3 @@
+[submodule "pg_tools/orafce"]
+	path = pg_tools/orafce
+	url = git@github.com:orafce/orafce.git

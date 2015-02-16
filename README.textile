@@ -13,7 +13,7 @@ h3. environment
 *** pip
 *** fabric
 
-* Target Operating System is...
+* Target Operating System is
 ** CentOS 7.0
 
 * can use ~/.ssh/config settings.
@@ -21,24 +21,32 @@ h3. environment
 h3. Usage Command
 
 * list usable fabric command
-<pre>
-$ fab -l
-</pre>
+<pre>$ fab -l </pre>
 
 * install and start process with postgres
-<pre>
-$ fab -H [host_name] startup_postgres:[pg_version],[package_version],[os],[architecture]
-</pre>
+<pre>$ fab -H [host_name] startup_postgres:[pg_version],[package_version],[os],[architecture]</pre>
 ** default
 *** OS: rhel7(CentOS7)
 *** PostgreSQL: 9.3.5
 *** architecture: x86_64
 
 * cleanup PostgreSQL environment
-<pre>
-$ fab -H [host_name] postgres.remove_postgres
-</pre>
+<pre>$ fab -H [host_name] postgres.remove_postgres</pre>
+
+h2. PostgreSQL tools
+
+h3. orafce
+
+* install/uninstall orafce
+<pre>fab -H [hostname] orafce.install
+fab -H [hostname] orafce.uninstall </pre>
+
+* running testcode in orafce
+<pre>fab -H [hostname] orafce.test</pre>
+you must install software "gcc, bison, flex" in test server and setting submodule when running this task.
+<pre>sudo yum install -y gcc bison flex</pre><pre>git sumodule init
+cd pg_tools/orafce
+git checkout [TARGET_BRANCH]</pre>
+
 
 * under construction...
-
-
